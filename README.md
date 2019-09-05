@@ -32,7 +32,7 @@ The summary is not recursive at the moment. It is only prints one directory deep
 
 ## Requirements
 
-Download and install [.NET Core 3](https://dotnet.microsoft.com/download/dotnet-core/3.0). For this example, I am utilizing the following versions of software. Note that `Argu` is added within [Project Creation and Dependencies](project-creation-and-dependencies).
+Download and install [.NET Core 3](https://dotnet.microsoft.com/download/dotnet-core/3.0). For this example, I am utilizing the following versions of software. Note that `Argu` is added within [Project Creation and Dependencies](#project-creation-and-dependencies).
 
 ```sh
 macOS version:
@@ -86,3 +86,7 @@ dotnet run -- --name Curtis
 ## Turn into single exe
 
 Instructions here.
+
+# Future
+
+Get [paket](https://fsprojects.github.io/Paket/) to work with the [.NET Core SDK].
