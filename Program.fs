@@ -1,23 +1,20 @@
-﻿open System
-open Argu
+﻿module Derse.Main
 
-type CLIArguments =
-    | [<Mandatory>]Name of name:string
-with
-    interface IArgParserTemplate with
-        member s.Usage =
-            match s with
-            | Name _ -> "Name of user"
+open System
+open Argu
+open Derse.Arguments
+open Derse.Dir
 
 [<EntryPoint>]
 let main argv =
-    let parser = ArgumentParser.Create<CLIArguments>(programName = "ipstack")
+    let errorHandler = ProcessExiter(colorizer = function ErrorCode.HelpText -> None | _ -> Some ConsoleColor.Red)
+    let parser = ArgumentParser.Create<DerseArguments>(programName = "derse", errorHandler = errorHandler)
 
     try
         let args = parser.Parse argv
 
         match args.GetAllResults() with
-        | [Name n] -> printfn "My name is %s" n
+        | [Directory d] -> printfn "The directory to produce a summary: %s" d
         | _ -> ()
         0
     with
