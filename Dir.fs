@@ -1,12 +1,11 @@
 module Derse.Dir
 
-
 open System.IO
 
 let summarizeFiles (dir, fileSeq) =
     let fileSize (_, size) = size
     let fileSizeFloat(_, size) = float size
-    let fileExt (file, _) = Path.GetExtension file
+    let fileExt ((file:string), _) = Path.GetExtension file
 
     let totalSize = fileSeq |> Seq.sumBy fileSize
     let avgSize = fileSeq |> Seq.averageBy fileSizeFloat

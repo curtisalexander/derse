@@ -14,7 +14,9 @@ let main argv =
         let args = parser.Parse argv
 
         match args.GetAllResults() with
-        | [Directory d] -> printfn "The directory to produce a summary: %s" d
+        | [Directory d] ->
+            printfn "Summarizing directories within %s" d
+            summarizeDirPrint d
         | _ -> ()
         0
     with
