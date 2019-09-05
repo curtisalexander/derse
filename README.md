@@ -88,26 +88,71 @@ dotnet run -- --directory "/some/random/dir"
 Now because of .NET Core 3], we can publish as a [single exe](https://devblogs.microsoft.com/dotnet/announcing-net-core-3-0-preview-5/).
 
 ```
-dotnet publish -r osx-x64 /p:PublishSingleFile=true
+dotnet publish -r osx-x64 -c Release /p:PublishSingleFile=true
 ```
 
 To test.
 
 ```
-bin/Debug/netcoreapp3.0/osx-x64/publish/derse --help
+bin/Release/netcoreapp3.0/osx-x64/publish/derse --help
 ```
 
 How large is the file?
 
 ```
-du -sh bin/Debug/netcoreapp3.0/osx-x64/publish/derse
+du -sh bin/Release/netcoreapp3.0/osx-x64/publish/derse
 ```
 
-It is coming at `80M`. Yikes!
+It is coming in at `80M`. Yikes!
 
 ## Tree shaking
 
-Reduce the size of the exe.
+Reduce the size of the exe. Edit the `derse.fsproj` file. Add the tags `<PublishTrimmed>`, `<PublishReadyToRun>`, `<PublishSingleFile>`, and `<RuntimeIdentifier>`.
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishSingleFile>true</PublishSingleFile>
+    <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Arguments.fs" />
+    <Compile Include="Dir.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Argu" Version="5.5.0" />
+  </ItemGroup>
+</Project>
+```
+
+Test again.
+
+```
+bin/Release/netcoreapp3.0/osx-x64/publish/derse --help
+```
+
+Check the size again.
+
+```
+du -sh bin/Release/netcoreapp3.0/osx-x64/publish/derse
+```
+
+Better - at `61MB`.
+
+## Warp
+
+Can [Warp](https://github.com/dgiagio/warp) [reduce the size](https://www.hanselman.com/blog/BrainstormingCreatingASmallSingleSelfcontainedExecutableOutOfANETCoreApplication.aspx) of the exe?
+
+Let's add a [.NET Core global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools).
+
+```
+dotnet tool install -g dotnet-warp
+```
 
 # Future
 
