@@ -41,7 +41,7 @@ let summarizeDir (startingDirectory:string) =
 
 
 let summarizeDirPrint (startingDirectory:string) =
-    dirSizes startingDirectory
+    summarizeDir startingDirectory
     |> Seq.iter (printfn "%A\n")
 
 // Testing
