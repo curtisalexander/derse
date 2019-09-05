@@ -80,13 +80,15 @@ dotnet build
 Then to test.
 
 ```
-dotnet run -- --name Curtis
+dotnet run -- --directory "/some/random/dir"
 ```
-
-## Turn into single exe
-
-Instructions here.
 
 # Future
 
-Get [paket](https://fsprojects.github.io/Paket/) to work with the [.NET Core SDK].
+## Paket
+
+Figure out use of [paket](https://fsprojects.github.io/Paket/) while still utilizing `.NET Core SDK`.
+
+## Turn into single exe
+
+:construction:
