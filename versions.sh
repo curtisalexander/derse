@@ -12,5 +12,5 @@ echo
 
 # Argu
 echo "Argu version:"
-dotnet list Argu
+dotnet list derse.fsproj package
 echo
