@@ -15,7 +15,7 @@ let main argv =
 
         match args.GetAllResults() with
         | [Directory d] ->
-            printfn "Summarizing directories within %s" d
+            printfn "Summarizing directories within %s\n" d
             summarizeDirPrint d
         | _ -> ()
         0
