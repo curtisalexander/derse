@@ -28,6 +28,8 @@ Prints the following information to the console.
 
 The summary is not recursive at the moment. It is only prints one directory deep.
 
+In addition, error checking to see if the `--directory` passed in exists and is truly a directory. It is assumed that at least 1 directory and at least 1 file within a directory exists. May need to use other functions from the `Seq` module such as
+
 # Colophon
 
 ## Requirements
@@ -144,18 +146,19 @@ du -sh bin/Release/netcoreapp3.0/osx-x64/publish/derse
 
 Better - at `61MB`.
 
+# Future
+
 ## Warp
 
 Can [Warp](https://github.com/dgiagio/warp) [reduce the size](https://www.hanselman.com/blog/BrainstormingCreatingASmallSingleSelfcontainedExecutableOutOfANETCoreApplication.aspx) of the exe?
 
-Let's add a [.NET Core global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools).
+First, add a [.NET Core global tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools).
 
 ```
 dotnet tool install -g dotnet-warp
 ```
 
-# Future
-
+**Under construction.**
 :construction:
 
 ## Paket
