@@ -1,0 +1,12 @@
+## macOS
+.DS_Store
+
+
+## editor
+.ionide/
+
+
+## build
+bin/
+obj/
+
