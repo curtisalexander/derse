@@ -105,6 +105,10 @@ du -sh bin/Debug/netcoreapp3.0/osx-x64/publish/derse
 
 It is coming at `80M`. Yikes!
 
+## Tree shaking
+
+Reduce the size of the exe.
+
 # Future
 
 :construction:
