@@ -67,7 +67,7 @@ dotnet add package Argu --version=5.5.0
 
 ## Code
 
-Write the code. For now everything is simply within `Program.fs`.
+Write the code.
 
 ## Build and Run
 
