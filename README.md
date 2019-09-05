@@ -83,12 +83,36 @@ Then to test.
 dotnet run -- --directory "/some/random/dir"
 ```
 
+## Turn into single exe
+
+Now because of .NET Core 3], we can publish as a [single exe](https://devblogs.microsoft.com/dotnet/announcing-net-core-3-0-preview-5/).
+
+```
+dotnet publish -r osx-x64 /p:PublishSingleFile=true
+```
+
+To test.
+
+```
+bin/Debug/netcoreapp3.0/osx-x64/publish/derse --help
+```
+
+How large is the file?
+
+```
+du -sh bin/Debug/netcoreapp3.0/osx-x64/publish/derse
+```
+
+It is coming at `80M`. Yikes!
+
 # Future
+
+:construction:
 
 ## Paket
 
 Figure out use of [paket](https://fsprojects.github.io/Paket/) while still utilizing `.NET Core SDK`.
 
-## Turn into single exe
+## Azure DevOps
 
-:construction:
+Push with a [git tag]() and then have DevOps build and cut a release on Github. Add instructions using `curl` to install to the README.
