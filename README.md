@@ -11,7 +11,13 @@ This is a simple application experimenting with [.NET Core 3](https://dotnet.mic
 From Argu.
 
 ```
-here it is
+USAGE: derse [--help] --directory <directory>
+
+OPTIONS:
+
+    --directory <directory>
+                          Directory to create summary
+    --help                display this list of options.
 ```
 
 ## Results
@@ -28,7 +34,7 @@ Prints the following information to the console.
 
 The summary is not recursive at the moment. It is only prints one directory deep.
 
-In addition, error checking to see if the `--directory` passed in exists and is truly a directory. It is assumed that at least 1 directory and at least 1 file within a directory exists. May need to use other functions from the `Seq` module such as
+In addition, error checking to see if the `--directory` passed in exists and is truly a directory needs to be added. It is assumed that at least 1 directory and at least 1 file within a directory exists. May need to use other functions from the `Seq` module such as `Seq.choose` in order to work with [Option](https://msdn.microsoft.com/visualfsharpdocs/conceptual/core.option-module-%5bfsharp%5d) types.
 
 # Colophon
 
@@ -87,7 +93,7 @@ dotnet run -- --directory "/some/random/dir"
 
 ## Turn into single exe
 
-Now because of .NET Core 3], we can publish as a [single exe](https://devblogs.microsoft.com/dotnet/announcing-net-core-3-0-preview-5/).
+Now because of [.NET Core 3], we can publish as a [single exe](https://devblogs.microsoft.com/dotnet/announcing-net-core-3-0-preview-5/).
 
 ```
 dotnet publish -r osx-x64 -c Release /p:PublishSingleFile=true
